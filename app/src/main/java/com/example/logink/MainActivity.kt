@@ -1,10 +1,10 @@
 package com.example.logink
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.logink.databinding.ActivityMainBinding
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,10 +15,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(busca.root)
 
         busca.btnEnt.setOnClickListener {
-            if (busca.inpEmail.text.toString() == "" && busca.inpPasswd.text.toString() == "") run {
+            val email = busca.inpEmail.text
+
+            if (email.toString() != "" && busca.inpPasswd.text.toString() != "") {
                 Toast.makeText(this, "Penchant Todos os Campos", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, CalcActivity::class.java)
+                startActivity(intent)
             }
         }
+
 
     }
 }
